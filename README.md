@@ -6,20 +6,6 @@ A scalable and secure **User Management** and **Payment Management System** deve
 
 ---
 
-## **Table of Contents**
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Architecture](#architecture)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Future Enhancements](#future-enhancements)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
 ## **Features**
 
 ### **User Management**
