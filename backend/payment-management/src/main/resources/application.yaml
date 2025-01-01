@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: PAYMENT-MANAGEMENT-SERVICE
+  cloud:
+    gateway:
+      globalcors:
+        corsCofiguration:
+          [/**]:
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            allowedHeaders:
+              - "*"
+  datasource:
+    url: jdbc:mysql://ead3-instance-1.ch0mg0sywvjb.ap-south-1.rds.amazonaws.com/ead3
+    username: admin
+    password: wIvsa9-dykjon-suxcuq
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: jobgeniouslk@gmail.com
+    password: gngr wzhx plnn anwo
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+eureka:
+  client:
+    serviceUrl:
+#     defaultZone: http://service-registry:8761/eureka/
+         defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8085

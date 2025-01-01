@@ -1,0 +1,6 @@
+<aspectj>
+    <weaver options="-showWeaveInfo -Xlint:ignore">
+        <exclude within="org.springframework.boot.jdbc.DataSourceBuilder.OraclePoolDataSourceProperties"/>
+        <exclude within="org.springframework.boot.diagnostics.analyzer.ValidationExceptionFailureAnalyzer"/>
+    </weaver>
+</aspectj>

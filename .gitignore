@@ -1,0 +1,7 @@
+backend/.vscode/*
+.vscode/*
+backend/.vscode/settings.json
+backend/order-management/.DS_Store
+ead.pem
+.idea/*
+backend/.idea

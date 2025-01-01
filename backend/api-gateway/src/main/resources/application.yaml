@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+#     defaultZone: http://service-registry:8761/eureka/
+         defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: API-GATEWAY
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            allowedHeaders:
+              - "*"
+
+jwt:
+  secret: 843567893696976453275974432697R634976R738467TR678T34865R6834R8763T478378637664538745673865783678548735687R3
+
+token:
+  verification:
+    url: http://localhost:8081/auth/verify-token

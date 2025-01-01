@@ -1,0 +1,87 @@
+services:
+  service-registry:
+    build:
+      context: ./service-registry
+    container_name: service-registry
+    ports:
+      - "8761:8761"
+    networks:
+      - private-network
+      - public-network
+    environment:
+      - EUREKA_SERVER_URL=http://service-registry:8761/eureka
+      - SPRING_PROFILES_ACTIVE=docker
+
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    networks:
+      - public-network
+      - private-network
+    environment:
+      - EUREKA_SERVER_URL=http://service-registry:8761/eureka
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - service-registry
+
+  user-management-service:
+    build:
+      context: ./user-management
+    container_name: user-management-service
+    networks:
+      - private-network
+    environment:
+      - EUREKA_SERVER_URL=http://service-registry:8761/eureka
+      - SPRING_PROFILES_ACTIVE=docker
+    env_file:
+      - ./user-management/.env
+    depends_on:
+      - service-registry
+
+  product-management-service:
+    build:
+      context: ./product-management
+    container_name: product-management-service
+    networks:
+      - private-network
+    environment:
+      - EUREKA_SERVER_URL=http://service-registry:8761/eureka
+      - SPRING_PROFILES_ACTIVE=docker
+    env_file:
+      - ./product-management/.env
+    depends_on:
+      - service-registry
+
+  order-management-service:
+    build:
+      context: ./order-management
+    container_name: order-management-service
+    networks:
+      - private-network
+    environment:
+      - EUREKA_SERVER_URL=http://service-registry:8761/eureka
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - service-registry
+
+  payment-management-service:
+    build:
+      context: ./payment-management
+    container_name: payment-management-service
+    networks:
+      - private-network
+    environment:
+      - EUREKA_SERVER_URL=http://service-registry:8761/eureka
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - service-registry
+
+networks:
+  private-network:
+    driver: bridge
+  public-network:
+    driver: bridge
